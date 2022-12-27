@@ -26,8 +26,8 @@ class SqlDataSourceReader(DataSourceReader):
 
 
 class PaymentReader:
-    # def __init__(self, reader: DataSourceReader) -> None:
-    #     self.reader = reader
+    def __init__(self, reader: DataSourceReader) -> None:
+        self.reader = reader
 
     def read_payments(self):
         """Carga de pagos"""
@@ -129,7 +129,7 @@ class PaymentManager:
             raw_data (dict): _description_
         """
         self.raw_data = raw_data
-        self.payment_reader = PaymentReader()
+        self.payment_reader = PaymentReader(MemoryDataSourceReader())
         self.output = Output()
 
     def load_payments(self):
